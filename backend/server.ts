@@ -1,13 +1,21 @@
-import { app } from "@/app/routes";
+// external modules
+import colors from 'colors'
+
+// internal modules
 import { sequelize } from '@/config/database'
+import { app } from "@/app/routes";
+import { App } from "@/config/application"
 
 // init sequelize
-(async () => {
-  await sequelize.sync({ alter: true });
-})(); 
+if ( App.connectDatabase === "true") {
+  (async () => {
+    await sequelize.sync({ alter: true });
+  })(); 
+} 
 
-const PORT = 3000
+const PORT = App.port || 8080
+const DB_CONENCTION = App.connectDatabase
 
 app.listen(PORT , () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server Running On ${colors.cyan(`http://localhost:${PORT}`)} | Allow Database Connection: ${colors.cyan(`${DB_CONENCTION}`)}`);
 });

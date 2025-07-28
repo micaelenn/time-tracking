@@ -6,7 +6,6 @@ export const app = express();
 
 // Internal modules
 import { tasks } from "./tasks/tasks.controller"
-import { webhook } from "./webhook/webhook.controller"
 import { heartbeat } from "./heartbeat/heartbeat.controller"
 
 // Middlewares
@@ -15,5 +14,4 @@ app.use(cors());
 
 // Routes
 app.use("", tasks);
-app.use("", webhook);
 app.use("", heartbeat);

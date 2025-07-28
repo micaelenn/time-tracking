@@ -6,7 +6,7 @@ import { Heartbeat } from "./heartbeat.model";
 
 class HeartbeatService {
     heartbeat() {
-        return new Date().getTime()
+        return Date.now()
     }
 }
 

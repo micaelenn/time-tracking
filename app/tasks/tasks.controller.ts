@@ -2,22 +2,22 @@
 import { Request, Response, Router } from "express";
 
 // internal modules
-import { webhookService } from "./webhook.service";
+import { tasksService } from "./tasks.service";
 import { setEndpoint } from '@/config/application'
 import { tryCatch } from '@/utils/helpers/tryCatch'
 
-export const webhook = Router();
+export const tasks = Router();
 
 // POST
-webhook.post(setEndpoint('webhook'), tryCatch(
+tasks.post(setEndpoint('tasks'), tryCatch(
   async (req: Request, res: Response) => {
-    res.status(200).send({ message: "Hello World!" });
+    res.status(200).send({});
   })
 )
 
 // GET
-webhook.get(setEndpoint('webhook'), tryCatch(
+tasks.get(setEndpoint('tasks'), tryCatch(
   async (req: Request, res: Response) => {
-    res.status(200).send({ message: "Hello World!" });
+    res.status(200).send({});
   })
 );
